@@ -1,0 +1,370 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+
+<!-- Show Welcome Area Start -->
+
+<!-- Show Welcome Area End -->
+
+<!-- Show Routine Area Start -->
+
+<section class="show-routine-area section-padding-80-0 mb-50">
+    <div class="col-12">
+        <div class="section-heading text-center">
+            <h2 onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">PASSOUT YEARS</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="showRoutineTab" role="tablist">
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2011</b>
+                        </a>
+                    </li>
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2012</b>
+                        </a>
+                    </li>
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2013</b>
+                        </a>
+                    </li>
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-4" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2014</b>
+                        </a>
+                    </li>
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-5" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2015</b>
+                        </a>
+                    </li>
+                    <!-- Single Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-6" data-toggle="tab" href="#tab6" role="tab" aria-controls="tab6" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2016</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-7" data-toggle="tab" href="#tab7" role="tab" aria-controls="tab6" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2017</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-8" data-toggle="tab" href="#tab8" role="tab" aria-controls="tab6" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2018</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-9" data-toggle="tab" href="#tab9" role="tab" aria-controls="tab6" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2019</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-10" data-toggle="tab" href="#tab10" role="tab" aria-controls="tab6" aria-selected="false">
+                            <b onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">2020</b>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="showRoutineTabContent">
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ eleven|length}}</span> </h6>
+                        <br>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if eleven %} {% for obj in eleven %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2011</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab-2">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ twelve|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if twelve %} {% for obj in twelve %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2012</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab-3">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ thirteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if thirteen %} {% for obj in thirteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2013</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab-4">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ fourteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if fourteen %} {% for obj in fourteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2014</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab-5">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ fifteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if fifteen %} {% for obj in fifteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2015</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab-5">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ sixteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if sixteen %} {% for obj in sixteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2016</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab7" role="tabpanel" aria-labelledby="tab-5">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ seventeen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if seventeen %} {% for obj in seventeen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2017</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab8" role="tabpanel" aria-labelledby="tab-5">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ eighteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if eighteen %} {% for obj in eighteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2018</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab9" role="tabpanel" aria-labelledby="tab-5">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ nineteen|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if nineteen %} {% for obj in nineteen %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2019</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
+                    <!-- Single Tab Content -->
+                    <div class="tab-pane fade" id="tab10" role="tabpanel" aria-labelledby="tab-6">
+                        <h6><b>Results :</b> <span style="color:rgb(175, 22, 93);font-weight:bold;">{{ twenty|length}}</span> </h6>
+                        <div class="row">
+                            <!-- Single Show Item -->
+                            {% if twenty %} {% for obj in twenty %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-show-item mb-30">
+                                    {% if obj.profile.profile_pic.url %}
+                                    <img src="{{obj.profile.profile_pic.url}}" alt=""> {% else %}
+                                    <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                                    <div class="overlay-content">
+                                        <div class="text-center">
+                                            <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                            <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                            {% if obj.profile.company %}
+                                            <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                            <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} {% else %}
+                            <p style="text-align: center;color:black;">No Students Added their profile having passout_year : <b style="color: rgb(243, 36, 243);font-size:larger;">2020</b></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Show Routine Area End -->
+
+{% endblock %}

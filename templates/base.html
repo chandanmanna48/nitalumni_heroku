@@ -1,0 +1,389 @@
+<!DOCTYPE html> {% load static %} {% load socialaccount %} {% providers_media_js %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>NITAlumni</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static '/img/core-img/favicon.ico'%}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style1.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/signup.css'%}" type="text/css">
+    <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet" type="text/css" media="all" />
+    <script src="{% static 'js/signup.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-social.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="{% static '//fonts.googleapis.com/css?family=Hind:300,400,500,600,700'%}" rel="stylesheet">
+
+    <!--Profile-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'profile/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/linericon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/owl-carousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/lightbox/simpleLightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/nice-select/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/animate-css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/vendors/flaticon/flaticon.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'profile/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/css/responsive.css' %}">
+    <!--ContactUS-->
+    <link rel="stylesheet" href="{% static 'contact_us/style.css' %}">
+
+    <style>
+        .header-area a {
+            text-decoration: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <!--<div id="preloader">
+        <div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <span>Wait, please...</span>
+        </div>
+    </div> -->
+    <!-- /Preloader -->
+
+    <!-- Top Search Area Start -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close Button -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                        <!-- Form -->
+                        <form method="POST" action="{% url 'search_result' %}">
+                            {% csrf_token %}
+                            <input type="email" name="top-search-bar-email" class="form-control" placeholder="Type Email and hit enter...">
+                            <button type="submit" value="submit" name="submit">Search</button>
+                        </form>
+                        <!-- Search Button -->
+                        <div class="search-btn"><i class="icon_search"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Search Area End -->
+
+    <!-- Social Share Area Start -->
+    <div class="razo-social-share-area">
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a>
+        <a href="#" class="ss-close-btn"><i class="arrow_right"></i></a>
+    </div>
+    <!-- Social Share Area End -->
+
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="razoNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.gif'%}" alt="Logo" height="100px" width="100px" style="margin-top: 10px;" class="img-fluid"></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="/" title="Home">Home</a></li>
+                                    <!--   <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./index.html">- Home</a></li>
+                                            <li><a href="./charts.html">- Charts</a></li>
+                                            <li><a href="./single-charts.html">- Charts Details</a></li>
+                                            <li><a href="./podcast.html">- Podcast</a></li>
+                                            <li><a href="./single-podcast.html">- Podcast Details</a></li>
+                                            <li><a href="./show.html">- Show</a></li>
+                                            <li><a href="./events.html">- Event</a></li>
+                                            <li><a href="./blog.html">- Blog</a></li>
+                                            <li><a href="./single-blog.html">- Blog Details</a></li>
+                                            <li><a href="#">- Dropdown</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li> -->
+                                    <li><a href="{% url 'gallery'%}">About</a></li>
+                                    <li><a href="{% url 'gallery'%}" title="Gallery">Gallery</a></li>
+                                    <!--    <li><a href="./charts.html">Charts</a></li>
+                                    <li><a href="./podcast.html">Podcasts</a></li>
+                                       <li><a href="#">Mega</a>
+                                        <div class="megamenu">
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="./index.html">- Home</a></li>
+                                                <li><a href="./charts.html">- Charts</a></li>
+                                                <li><a href="./single-charts.html">- Charts Details</a></li>
+                                                <li><a href="./podcast.html">- Podcast</a></li>
+                                                <li><a href="./single-podcast.html">- Podcast Details</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="./show.html">- Show</a></li>
+                                                <li><a href="./events.html">- Event</a></li>
+                                                <li><a href="./blog.html">- Blog</a></li>
+                                                <li><a href="./single-blog.html">- Blog Details</a></li>
+                                                <li><a href="./index.html">- Home</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="./charts.html">- Charts</a></li>
+                                                <li><a href="./single-charts.html">- Charts Details</a></li>
+                                                <li><a href="./podcast.html">- Podcast</a></li>
+                                                <li><a href="./single-podcast.html">- Podcast Details</a></li>
+                                                <li><a href="./show.html">- Show</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="./show.html">- Show</a></li>
+                                                <li><a href="./events.html">- Event</a></li>
+                                                <li><a href="./blog.html">- Blog</a></li>
+                                                <li><a href="./single-blog.html">- Blog Details</a></li>
+                                                <li><a href="./index.html">- Home</a></li>
+                                            </ul>
+                                        </div>
+                                    </li> -->
+                                    <li><a href="./events.html">Events</a></li>
+                                    <li><a href="./blog.html">Blog</a></li>
+                                    <li><a href="{% url 'alumini_cell' %}" title="Alumini-Cell">ALUMNI-CELL</a></li>
+                                    {% if not user.is_anonymous %}
+                                    <!--<li><a href="#" style="color: rgb(48, 208, 248);text-transform:lowercase;">{{user}}</a></li> -->
+                                    {% endif %} {% if user and not user.is_anonymous %}
+                                    <li style="height: 50px;">
+                                        <a href="{% url 'profile' %}" title="Profile"><img src="{{user.profile.profile_pic.url}}" class="rounded-circle" height="30px" width="40px" style="border-radius: 40%;" alt="Profile"></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'logout' %}"><img src="{% static 'img/exit.png'%}" height="40px" width="40px" style="border-radius:50%;" alt="Logout" title="logout"></a>
+                                    </li>
+                                    {% if user.is_master %}
+                                    <li style="height: 50px;">
+                                        <a href="{% url 'approval' %}" title="Approval" style="color: aqua;"> Approval </a>
+                                    </li>
+                                    {% endif %} {% else %}
+                                    <li><a href="#" title="sign up">SIGN UP</a>
+                                        <ul class="dropdown" style="background-color: aquamarine;">
+                                            <li style="background-color: #dd4b39;margin-top:3px;margin-left:2px;margin-right:2px;">
+                                                <a href="{% provider_login_url 'google' %}" class="btn btn-block btn-social btn-google" style="color: white;">
+                                                    <span class="fa fa-google"></span> - Sign in with Google
+                                                </a>
+                                            </li>
+                                            <li style="background-color: #3B5998;margin-top:3px;margin-left:2px;margin-right:2px;">
+                                                <a class="btn btn-block btn-social btn-facebook" style="color: white;" href="{% provider_login_url 'facebook' method='oauth2' %}">
+                                                    <span class="fa fa-facebook"></span> - Sign in with facebook
+                                                </a>
+                                            </li>
+                                            <li style="background-color: #0e76a8;margin-top:3px;margin-left:2px;margin-right:2px;">
+                                                <a class="btn btn-block btn-social btn-linkedin" style="color: white;">
+                                                    <span class="fa fa-linkedin"></span> - Sign in with LinkedIn
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+
+                                <!-- Share Icon -->
+                                <div class="social-share-icon">
+                                    <i class="social_share"></i>
+                                </div>
+
+                                <!-- Search Icon -->
+                                <div class="search-icon" data-toggle="modal" data-target="#searchModal">
+                                    <i class="icon_search"></i>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+    {% block content%} {% endblock %}
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area " style="background-image:linear-gradient(45deg, #fbac7f, #e5658a);">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-80-0">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <!-- Single Footer Widget -->
+                    <div class="card bg-info " style="height: 37rem;color:black;">
+                        <div class="card-header text-white text-lg-left" style="font-size: larger;font-weight:bold;">
+                            VISIONARY
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Footer Logo -->
+                                <div class="card" style="width: 18rem;height: 32rem;">
+                                    <img class="card-img-top" src="{% static 'img/Narottam_Sir.jpg' %}" alt="Narottam Sahu">
+                                    <div class="card-body" style="background-color:#62B6CB;">
+                                        <h5 class="card-title" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='rgb(7, 7, 7)'" style="color: rgb(7, 7, 7);">Narottam Sahu</h5>
+                                        <p class="card-text">HOD (Dept. of CSE)</p>
+                                        <p class="card-text">Email : chandanmanna48@gmail.com</p>
+                                        <p class="card-text">Contact No. : 7894920268</p>
+                                        <a href="#" class="btn btn-primary">Show Profile </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="card bg-info " style="height: 37rem;">
+                        <div class="card-header text-white text-lg-left" style="font-size: larger;font-weight:bold;">
+                            DEVELOPER
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Footer Logo -->
+                                <div class="card" style="width: 18rem;height: 32rem;">
+                                    <img class="card-img-top" src="{% static 'img/chandan.jpg' %}" style="height: 290px;width:300px;" alt="Chandan Kumar Manna">
+                                    <div class="card-body" style="background-color:#62B6CB;">
+                                        <h5 class="card-title" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='rgb(7, 7, 7)'" style="color: rgb(7, 7, 7);">Chandan Kumar Manna</h5>
+                                        <p class="card-text">STUDENT (Dept. of CSE)</p>
+                                        <p class="card-text">Email : chandanmanna48@gmail.com</p>
+                                        <p class="card-text">Contact No. : 7894920268</p>
+                                        <a href="#" class="btn btn-primary">Show Profile </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="wrapper" style="height: 37rem;">
+                        <div class="contact__container">
+                            <div class="contact__title">
+                                <h2>Contact us
+                                    <hr>
+                                </h2>
+
+                            </div>
+                            <form class="contact__form" method="POST" action="{% url 'contact_mail' %}">
+                                {% csrf_token %}
+                                <p>Name</p>
+                                <input type="text" name="name_sender" class="contact__form-input" required>
+
+                                <p>Email</p>
+                                <input type="email" name="email_sender" class="contact__form-input" required>
+
+                                <p>Message</p>
+                                <textarea type="text" name="message_sender" class="contact__form-textarea" required></textarea>
+
+                                <input type="submit" value="Send message">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Footer Area End -->
+
+    </footer>
+    <!-- Footer Area End -->
+
+    <!-- All JS Files -->
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <!-- Popper -->
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <!-- All Plugins -->
+    <script src="{% static 'js/razo.bundle.js'%}"></script>
+    <!-- Active -->
+    <script src="{% static 'js/default-assets/active.js'%}"></script>
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+</body>
+<script src="{% static 'js/jquery-2.2.4.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.bootstrap.js'%}" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="{% static 'js/material-bootstrap-wizard.js'%}"></script>
+
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="{% static 'js/jquery.validate.min.js'%}"></script>
+
+<!--Profile-->
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/stellar.js"></script>
+<script src="vendors/lightbox/simpleLightbox.min.js"></script>
+<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+<script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="vendors/popup/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+<script src="vendors/counter-up/jquery.counterup.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/theme.js"></script>
+
+</html>

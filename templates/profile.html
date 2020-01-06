@@ -1,0 +1,166 @@
+{% extends 'base.html'%} {% load static %}{% block content%}
+
+<!--================Home Banner Area =================-->
+<section class="home_banner_area">
+    <div class="container box_1620">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="banner_content">
+                {% if user.is_authenticated %}
+                <a class="btn btn-warning" style="float: right;margin-bottom:10px;" href="{% url 'edit_profile' %}"><img src="{% static 'img/create-24px.svg' %} " class="img-fluid" title="Edit"></a>
+                {% endif %}
+                <div class="media">
+                    <div class="d-flex" style="overflow: hidden;">
+                        {% if user.profile.profile_pic.url %}
+                        <img src="{{user.profile.profile_pic.url}}" class="img-fluid mx-lg-auto d-block img-thumbnail" style="border-radius: 10px;"> {% else %}
+                        <img src="{{user.profile.profile_pic}}" class="img-fluid mx-lg-auto d-block img-thumbnail" style="border-radius: 10px;"> {% endif %}
+
+                    </div>
+                    <div class="media-body">
+                        <div class="personal_text">
+                            <h6>Hello Friend, i am</h6>
+                            <h3>{{user.first_name}} {{user.last_name}}</h3>
+                            <!-- <p>You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</p>-->
+                            <ul class="list basic_info">
+                                <hr>
+                                <li>
+                                    <h2 style="color: gray;">PERSONAL</h2>
+                                </li>
+                                <hr>
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i>Full Name : <span style="color: black;">{{user.first_name}} {{user.last_name}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i>Passout-year : <span style="color: black;">{{user.profile.passout_year}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-phone-handset"></i>Registration No. : <span style="color: black;">{{user.profile.regdno}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i>Branch : <span style="color: black;">{{user.profile.branch}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i>Email : <span style="color: black;">{{user.email}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i>Contact No. : <span style="color: black;">{{user.profile.contactno}}</span></a></li>
+                                <hr>
+                                <li>
+                                    <h2 style="color: gray;">PROFESSIONAL</h2>
+                                </li>
+                                <hr>
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i>Profession : <span style="color: black;">{{user.profile.profession}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i>Company : <span style="color: black;">{{user.profile.company}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i>Designation : <span style="color: black;">{{user.profile.designation}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-phone-handset"></i>Work Location : <span style="color: black;">{{user.profile.work_location}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i>Work Country : <span style="color: black;">{{user.profile.work_country}}</span></a></li>
+                                <hr>
+                                <li>
+                                    <h2 style="color: gray;">RESCIDENCE</h2>
+                                </li>
+                                <hr>
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i>Address 1 : <span style="color: black;">{{user.profile.street_name}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-phone-handset"></i>Address 2 : <span style="color: black;">{{user.profile.street_number}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i>City : <span style="color: black;">{{user.profile.city}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i>State : <span style="color: black;">{{user.profile.state}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i>District : <span style="color: black;">{{user.profile.district}}</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i>Country : <span style="color: black;">{{user.profile.country}}</span></a></li>
+                            </ul>
+                            <ul class="list personal_social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Home Gallery Area =================-->
+<section class="home_gallery_area p_120">
+    <div class="container">
+        <a class="btn btn-warning" style="float: right;margin-bottom:10px;" href="{% url 'add_images' %}"><img src="{% static 'img/add_photo_alternate-24px.svg' %} " class="img-fluid" title="Add Images"></a>
+        <div class="main_title">
+            <h2 onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">My Gallery</h2>
+            <p>I Love to visit different places across the world..</p>
+        </div>
+        <div class="isotope_fillter">
+            <ul class="gallery_filter list">
+                <li class="active" data-filter="*"><a href="#">All</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gallery_f_inner row imageGallery1">
+            {% if gallery %} {% for obj in gallery %}
+            <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
+                <div class="h_gallery_item">
+                    <div class="g_img_item">
+                        <img class="img-fluid" src="{{obj.images.url}}" alt="">
+                        <a class="light" href="{{obj.images.url}}"><img src="{% static 'profile/img/gallery/icon.png' %}" alt=""></a>
+                        <a class="light" style="float: right;position:absolute;top:10px;margin-top:5px;" href="{% url 'delete_image' pk=obj.pk %}"><img src="{% static 'img/delete_forever-24px.svg' %}" height="30px" width="30px" class="img-fluid btn-danger rounded" title="Delete"></a>
+                    </div>
+                    <div class="g_item_text">
+                        {% if obj.title %}
+                        <h4 style="color: black;">{{obj.title}}</h4>
+                        {% endif %} {% if obj.description %}
+                        <p style="color: black;">{{obj.description}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <div class="container text-center">
+                <h1 style="color: gray;">No Gallery Found </h1>
+            </div>
+            {% endif %}
+        </div>
+        <!-- <div class="more_btn">
+            <a class="main_btn" href="#">Load More Items</a>
+        </div> -->
+    </div>
+</section>
+<!--================End Home Gallery Area =================-->
+
+<!--================Footer Area =================-->
+<!--  <footer class="footer_area p_120">
+        <div class="container">
+            <div class="row footer_inner">
+                <div class="col-lg-5 col-sm-6">
+                    <aside class="f_widget ab_widget">
+                        <div class="f_title">
+                            <h3>About Me</h3>
+                        </div>
+                        <p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
+                    </aside>
+                </div>
+                <div class="col-lg-5 col-sm-6">
+                    <aside class="f_widget news_widget">
+                        <div class="f_title">
+                            <h3>Newsletter</h3>
+                        </div>
+                        <p>Stay updated with our latest trends</p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                <div class="input-group d-flex flex-row">
+                                    <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                    <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+                                </div>
+                                <div class="mt-10 info"></div>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-2">
+                    <aside class="f_widget social_widget">
+                        <div class="f_title">
+                            <h3>Follow Me</h3>
+                        </div>
+                        <p>Let us be social</p>
+                        <ul class="list">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+<!--================End Footer Area =================-->
+
+
+
+{% endblock %}

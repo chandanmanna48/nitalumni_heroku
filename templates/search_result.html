@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<section class="show-routine-area section-padding-80-0 mb-50">
+    <div class="container">
+        <div class="tab-content" id="showRoutineTabContent">
+            <!-- Single Tab Content -->
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
+                <div class="row">
+                    <!-- Single Show Item -->
+                    {% if res %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="single-show-item mb-30">
+                            {% if res.profile.profile_pic.url %}
+                            <img src="{{res.profile.profile_pic.url}}" class="img-fluid mx-lg-auto d-block img-thumbnail" alt=""> {% else %}
+                            <img src="{{uploaded_file_url}}" alt=""> {% endif %}
+                            <div class="overlay-content">
+                                <div class="text-center">
+                                    <span><h4 style="color: white;">{{res.profile.regdno}}</h4></span>
+                                    <h3 style="text-transform: capitalize;">{{res.first_name}} {{res.last_name}}</h3>
+                                    {% if res.profile.company %}
+                                    <span>Company : {{ res.profile.company}}</span> {% endif %}
+                                    <span><b><a href="{% url 'show_profile' email=res.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p style="text-align: center;color:black;">No Results Found</p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

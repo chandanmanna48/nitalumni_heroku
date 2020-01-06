@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <h1 style="color: gray;">User Approval</h1>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-success">
+            <th scope="col"><b>PROFILE</b></th>
+            <th scope="col"><b>NAME</b></th>
+            <th scope="col"><b>REGD NO. </b></th>
+            <th scope="col"><b>BRANCH</b></th>
+            <th scope="col"><b>PASSOUT YEAR</b></th>
+            <th scope="col" colspan="2"><b>APPROVAL</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if users %} {% for obj in users %}
+        <tr>
+            <th scope="row"><img src="{{obj.profile.profile_pic.url}}" alt="profile_pic" height="100px" width="100px"></th>
+            <td>{{obj.first_name}} {{obj.last_name}}</td>
+            <td>{{obj.profile.regdno}}</td>
+            <td>{{obj.profile.branch}}</td>
+            <td>{{obj.profile.passout_year}}</td>
+            <td><a href="{% url 'accept' email=obj.email %}"><button class="btn btn-success"> Accept </button></a></td>
+            <td><a href="{% url 'remove' email=obj.email %}"><button class="btn btn-warning"> Remove </button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% else %}
+    <tr>
+        <td colspan="6">
+            <div class="container">
+                <h1 style="color: gray;">No Profile To Approve</h1>
+            </div>
+        </td>
+    </tr>
+    {% endif %}
+
+</table>
+
+
+{% endblock %}
