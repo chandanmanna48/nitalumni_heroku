@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="show-routine-area section-padding-80-0 mb-50">
+    <div class="col-12">
+        <div class="section-heading text-center">
+            <h2 onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='#EE4C7C'" style="color: #EE4C7C;">PASSOUT YEAR {{cbatch}}</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="tab-content" id="showRoutineTabContent">
+            <!-- Single Tab Content -->
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
+                <div class="row">
+                    <!-- Single Show Item -->
+                    {% if objs %} {% for obj in objs %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="single-show-item mb-30">
+                            {% if obj.profile.profile_pic.url %}
+                            <img src="{{obj.profile.profile_pic.url}}" style="height: 250px;width:450px;" alt=""> {% else %}
+                            <img src="{{uploaded_file_url}}" height="200px" width="400px" alt=""> {% endif %}
+                            <div class="overlay-content">
+                                <div class="text-center">
+                                    <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
+                                    <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                    {% if obj.profile.company %}
+                                    <span>Company : {{ obj.profile.company}}</span> {% endif %}
+                                    <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% else %}
+                    <p style="text-align: center;color:black;font-weight:bold;font-size:larger;">No Students Added their profile <b style="color: rgb(243, 36, 243);font-size:larger;"></b></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

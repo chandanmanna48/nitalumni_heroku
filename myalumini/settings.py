@@ -57,7 +57,6 @@ AUTH_USER_MODEL = 'account_sec.User'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
@@ -101,8 +100,11 @@ WSGI_APPLICATION = 'myalumini.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nitalumni',
+        'USER': 'postgres',
+        'PASSWORD': 'raju5678',
+        'HOST': 'localhost',
     }
 }
 

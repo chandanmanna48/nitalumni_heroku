@@ -15,7 +15,9 @@ urlpatterns = [
     path(r'remove/(?p<email>\w+)',views.remove,name='remove'),
     path('add_images',views.add_images,name='add_images'),
     path('delete_image/<int:pk>/',views.delete_image,name='delete_image'),
-    path('search_result',views.search_result,name='search_result'),
+    path('email_search_result',views.email_search_result,name='email_search_result'),
+    path('regdno_search_result',views.regdno_search_result,name='regdno_search_result'),
+    path('name_search_result',views.name_search_result,name='name_search_result'),
     path('contact_mail',views.contact_mail,name='contact_mail'),
-   # path('info',views.info,name='info'),
+    path(r'show_alumni/(?p<batch>\w+)',views.show_alumni,name='show_alumni'),
 ]

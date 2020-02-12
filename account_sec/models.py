@@ -29,6 +29,10 @@ class Profile(models.Model):
     district = models.CharField(max_length=70,blank=True)
     country = models.CharField(max_length=70,blank=True)
     date_created = models.DateTimeField(default = timezone.now)
+    facebook_username = models.CharField(max_length=50,null=True,blank=True)
+    linkedin_resource_id = models.CharField(max_length=50,null=True,blank=True)
+    twitter_username = models.CharField(max_length=50,null=True,blank=True)
+    
     '''
     @receiver(post_save, sender = User)
     def create_user_profile(sender ,instance,created,**kwargs):
@@ -48,6 +52,7 @@ class Gallery(models.Model):
     title = models.CharField(max_length = 100,null=True,blank=True)
     description = models.TextField(null=True,blank=True)
     images = models.FileField(upload_to='gallery')
+    created_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.email

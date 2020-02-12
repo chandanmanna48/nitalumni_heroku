@@ -1,4 +1,8 @@
-{% extends 'base.html'%} {% load static %} {% block content %}
+{% extends 'base.html'%} {% load static %} {% block content %} {% if result_msg %}
+<div class="alert alert-success" role="alert">
+    {{result_msg}}
+</div>
+{% endif %}
 
 <!-- Welcome Area Start -->
 <section class="welcome-area">
