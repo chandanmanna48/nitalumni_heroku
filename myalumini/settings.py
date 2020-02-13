@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 
-    'widget_tweaks'
+   # 'widget_tweaks'
 ]
 AUTH_USER_MODEL = 'account_sec.User'
 
