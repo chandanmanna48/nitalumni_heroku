@@ -1,1 +1,1 @@
-web: gunicorn myalumini.wsgi --log-file
+web: gunicorn myalumini.wsgi --log-file -
