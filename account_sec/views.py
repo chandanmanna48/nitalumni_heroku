@@ -25,6 +25,7 @@ def user_register(request):
 
 def user_register_details(request):
    # profile = Profile()
+    message = ''
     
     if request.method == 'POST' and request.FILES['profile_pic']:
 
@@ -60,9 +61,10 @@ def user_register_details(request):
         message = 'Welcome to Nalanda Institute Of Technology,' + request.user.first_name +'You are the Alumini of our College, Your account is created please wait till Admin approve you, then you can See your Profile on the Alumini Cell, Have a great day.'
         sender = 'NitAlumini2020@gmail.com'
         receiver = request.user.email
-        send_mail(subject,message,sender,[receiver],fail_silently=False)
-       # request.user.first_visit()
+        #send_mail(subject,message,sender,[receiver],fail_silently=False)
+
         return redirect('/')
+
     else:
         return render(request,'user_register.html')
 
@@ -71,7 +73,7 @@ def logout(request):
     return redirect('/')
 
 def profile(request):
-    
+
     uemail = request.user.email
     
     user = User.objects.get(email=request.user.email)
