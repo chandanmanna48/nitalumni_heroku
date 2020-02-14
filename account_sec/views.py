@@ -33,6 +33,8 @@ def user_register_details(request):
         filename = fs.save(profile_pic.name,profile_pic)
         uploaded_file_url = fs.url(filename)
 
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
         email = request.user.email
         regdno = request.POST['regdno']
         passout_year = request.POST['passout_year']
@@ -50,7 +52,7 @@ def user_register_details(request):
         district = request.POST['district']
         country = request.POST['country']
 
-        profile = Profile.objects.create(profile_pic = filename,email=email,regdno = regdno,passout_year = passout_year,branch = branch,contactno = contactno,profession = profession,company= company,work_location = work_location,designation = designation,work_country = work_country,street_name = street_name,street_number = street_number,city = city,state = state,district = district,country = country)
+        profile = Profile.objects.create(first_name=first_name,last_name=last_name,profile_pic = filename,email=email,regdno = regdno,passout_year = passout_year,branch = branch,contactno = contactno,profession = profession,company= company,work_location = work_location,designation = designation,work_country = work_country,street_name = street_name,street_number = street_number,city = city,state = state,district = district,country = country)
         request.user.first_visited()
         request.user.profile = profile
         profile.save()
