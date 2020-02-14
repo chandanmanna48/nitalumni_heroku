@@ -25,7 +25,6 @@ def user_register(request):
 
 def user_register_details(request):
    # profile = Profile()
-    message = ''
     
     if request.method == 'POST' and request.FILES['profile_pic']:
 
