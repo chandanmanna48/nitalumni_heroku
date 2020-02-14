@@ -22,7 +22,7 @@
                             <div class="overlay-content">
                                 <div class="text-center">
                                     <span><h4 style="color: white;">{{obj.profile.regdno}}</h4></span>
-                                    <h3 style="text-transform: capitalize;">{{obj.first_name}} {{obj.last_name}}</h3>
+                                    <h3 style="text-transform: capitalize;">{{obj.profile.first_name}} {{obj.profile.last_name}}</h3>
                                     {% if obj.profile.company %}
                                     <span>Company : {{ obj.profile.company}}</span> {% endif %}
                                     <span><b><a href="{% url 'show_profile' email=obj.profile.email %}" style="text-decoration: none;">Show Profile</a></b></span>
