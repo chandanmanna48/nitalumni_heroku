@@ -10,9 +10,12 @@ from django.shortcuts import get_object_or_404
 from .forms import Profile_form,Gallery_form
 from django.core.mail import send_mail
 
+# Create your views here.
 def signup(request):
     return render(request,'signup.html')
 
+#def info(request):
+#    return render(request,'new.html')
 
 def user_register(request):
     if request.user.first_visit:
@@ -21,7 +24,8 @@ def user_register(request):
         return redirect('/')
 
 def user_register_details(request):
-
+   # profile = Profile()
+    
     if request.method == 'POST' and request.FILES['profile_pic']:
 
         profile_pic = request.FILES['profile_pic']
@@ -29,8 +33,6 @@ def user_register_details(request):
         filename = fs.save(profile_pic.name,profile_pic)
         uploaded_file_url = fs.url(filename)
 
-        first_name = request.POST['firstname']
-        last_name = request.POST['lastname']
         email = request.user.email
         regdno = request.POST['regdno']
         passout_year = request.POST['passout_year']
@@ -312,7 +314,7 @@ def add_images(request):
             form = form.save(commit = False)
             form.email = request.user.email
             form.save()
-            
+            #request.user.gallery = form
             request.user.save()
             return redirect('profile')
     else:
