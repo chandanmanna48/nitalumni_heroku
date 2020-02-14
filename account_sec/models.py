@@ -10,6 +10,8 @@ from django.utils import timezone
 class Profile(models.Model):
    # user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)
     #cuser = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    first_name = models.CharField(max_length=70,blank=True,null=True)
+    last_name = models.CharField(max_length=70,blank=True,null=True)
     email = models.EmailField(null=True,blank=True)
     regdno = models.CharField(max_length=70,null =False,blank =False)
     passout_year = models.CharField(max_length=70,null = False,blank = False)

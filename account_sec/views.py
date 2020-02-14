@@ -33,6 +33,8 @@ def user_register_details(request):
         filename = fs.save(profile_pic.name,profile_pic)
         uploaded_file_url = fs.url(filename)
 
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
         email = request.user.email
         regdno = request.POST['regdno']
         passout_year = request.POST['passout_year']
